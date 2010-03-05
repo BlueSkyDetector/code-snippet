@@ -1,0 +1,38 @@
+assert_coredump hooks assert() and make coredump.
+It requires Google CoreDumper.
+http://code.google.com/p/google-coredumper/
+
+Build:
+After install Google CoreDumper
+$ gcc -fPIC -O0 -shared -g -o assert_coredump.so assert_coredump.c -ldl
+
+Usage:
+use LD_PRELOAD
+
+$ cat hello_main.c
+#include <stdio.h>
+#include <assert.h>
+
+int main(){
+        puts("hello world");
+        assert(0);
+}
+
+$ gcc hello_main.c -o hello_main
+
+$ ./hello_main
+hello world
+hello_main: hello_main.c:6: main: Assertion `0' failed.
+Aborted
+
+$ LD_PRELOAD=./assert_coredump.so ./hello_main
+hello world
+#########################################
+     Generating CoreDump at assert()!!
+#########################################
+hello_main: hello_main.c:6: main: Assertion `0' failed.
+Aborted
+
+$ ls assert_*.core
+assert_9699.core
+
