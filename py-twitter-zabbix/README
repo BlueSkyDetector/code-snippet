@@ -1,0 +1,34 @@
+Copyright (C) 2010 Takanori Suzuki
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+
+py-twitter-zabbix.py is script to tweet zabbix alert message on twitter.
+
+how to use:
+1. Install python-twitter.
+   http://code.google.com/p/python-twitter/
+
+2. Copy py-twitter-zabbix.py to "AlertScriptsPath" defined in zabbix_server.conf
+   with zabbix user execute permission.
+
+3. Set username and password in py-twitter-zabbix.py.
+
+4. Create new script media type in zabbix and set py-twitter-zabbix.py as execute script.
+
+5. Set the new script media type as user's media.
+
+6. Set action to send message to the user.
+   Then the message body will be tweet in twitter.
