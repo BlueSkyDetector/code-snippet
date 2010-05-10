@@ -24,11 +24,14 @@ how to use:
 2. Copy py-twitter-zabbix.py to "AlertScriptsPath" defined in zabbix_server.conf
    with zabbix user execute permission.
 
-3. Set username and password in py-twitter-zabbix.py.
+3. Make sure zabbix user home directory exists.
+   If it doesn't exist, make it.
 
-4. Create new script media type in zabbix and set py-twitter-zabbix.py as execute script.
+4. Set username and password in py-twitter-zabbix.py.
 
-5. Set the new script media type as user's media.
+5. Create new script media type in zabbix and set py-twitter-zabbix.py as execute script.
 
-6. Set action to send message to the user.
+6. Set the new script media type as user's media.
+
+7. Set action to send message to the user.
    Then the message body will be tweet in twitter.
