@@ -29,7 +29,7 @@ how to use:
 
 4. Set username and password in py-twitter-zabbix.py.
 
-5. Create a new script media type in zabbix and set py-twitter-zabbix.py as execute script.
+5. Create a new media type in zabbix and set py-twitter-zabbix.py as execute script.
 
 6. Set the new script media type as user's media.
 
