@@ -23,7 +23,9 @@ how to use:
 1. Install python-twitter.
    http://code.google.com/p/python-twitter/
 
-2. Execute python-twitter-sample.py like following.
+2. set your twitter account information in python-twitter-sample.py
+
+3. Execute python-twitter-sample.py like following.
    > python-twitter-sample.py "some tweet"
 
-3. Then, you can get new tweet on twitter site.
+4. Then, you can get new tweet on twitter site.
