@@ -1,0 +1,35 @@
+Copyright (C) 2010 Takanori Suzuki
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+
+py-twitter-logger-zabbix.py is script to get twitter timeline and send it to zabbix by zabbix_sender.
+
+how to use:
+1. Install python-twitter.
+   http://code.google.com/p/python-twitter/
+
+2. Install python-daemon.
+   http://pypi.python.org/pypi/python-daemon/
+
+3. Set some information in py-twitter-logger-zabbix.py.
+
+4. Make monitoring item in zabbix like following.
+   Description:		twitter_logger
+   Type:		ZABBIX trapper
+   Key:			twitter_logger
+   Type of information:	Text
+
+5. Execute py-twitter-logger-zabbix.py. It works as a daemon and send messages to Zabbix periodically.
