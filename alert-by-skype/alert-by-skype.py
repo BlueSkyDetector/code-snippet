@@ -2,12 +2,14 @@
 # -*- coding: utf-8 -*-
 import time
 import Skype4Py
+import os
 
 ########## setting ############
 #CallAddress=u'+81-XX-XXXX-XXXX'
 CallAddress=skype.PlaceCall(u'echo123')
 ###############################
 
+os.environ['DISPLAY']=':0.0'
 skype = Skype4Py.Skype()
 ## send text message
 #chat = skype.CreateChatWith(u'echo123')
