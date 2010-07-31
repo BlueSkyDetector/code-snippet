@@ -5,19 +5,20 @@ import Skype4Py
 import os
 
 ########## setting ############
+## phone number
 #CallAddress=u'+81-XX-XXXX-XXXX'
+## skype id
 CallAddress=u'echo123'
 Timeout=30
+SoundFile=u'/var/lib/zabbix/error.wav'
+os.environ['DISPLAY']=':0.0'
 ###############################
 
-os.environ['DISPLAY']=':0.0'
-## send text message
-#chat = skype.CreateChatWith(CallAddress)
-#chat.SendMessage(u'message sent by python')
 ## call
 def main():
 	global CallAddress
 	global Timeout
+	global SoundFile
 	skype = Skype4Py.Skype()
 	try:
 		call=skype.PlaceCall(CallAddress)
@@ -28,16 +29,16 @@ def main():
 	sec = 0
 	while call.Status != Skype4Py.clsInProgress:
 		time.sleep(1)
-		sec+=1
+		sec += 1
 		if Timeout < sec:
 			call.Finish()
 			return -1
 	if call.Status == Skype4Py.clsInProgress:
-		call.InputDevice( Skype4Py.callIoDeviceTypeFile ,'/var/lib/zabbix/error.wav' )
+		call.InputDevice(Skype4Py.callIoDeviceTypeFile ,SoundFile)
 		sec = 0
 		while call.Status == Skype4Py.clsInProgress:
 			time.sleep(1)
-			sec+=1
+			sec += 1
 			if Timeout < sec:
 				call.Finish()
 		return 0
