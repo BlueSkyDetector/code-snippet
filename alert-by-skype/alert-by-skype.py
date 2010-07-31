@@ -6,22 +6,42 @@ import os
 
 ########## setting ############
 #CallAddress=u'+81-XX-XXXX-XXXX'
-CallAddress=skype.PlaceCall(u'echo123')
+CallAddress=u'echo123'
 Timeout=30
 ###############################
 
 os.environ['DISPLAY']=':0.0'
-skype = Skype4Py.Skype()
 ## send text message
-#chat = skype.CreateChatWith(u'echo123')
+#chat = skype.CreateChatWith(CallAddress)
 #chat.SendMessage(u'message sent by python')
 ## call
-call=skype.PlaceCall(CallAddress)
-while call.Status != Skype4Py.clsInProgress:
-	time.sleep(1)
-	Timeout-=1
-	if Timeout < 0:
-		break
-	pass
-call.InputDevice( Skype4Py.callIoDeviceTypeFile ,'/var/lib/zabbix/error.wav' )
+def main():
+	global CallAddress
+	global Timeout
+	skype = Skype4Py.Skype()
+	try:
+		call=skype.PlaceCall(CallAddress)
+	except:
+		# just skip
+		print "skype failed to make call."
+		return -1
+	sec = 0
+	while call.Status != Skype4Py.clsInProgress:
+		time.sleep(1)
+		sec+=1
+		if Timeout < sec:
+			call.Finish()
+			return -1
+	if call.Status == Skype4Py.clsInProgress:
+		call.InputDevice( Skype4Py.callIoDeviceTypeFile ,'/var/lib/zabbix/error.wav' )
+		sec = 0
+		while call.Status == Skype4Py.clsInProgress:
+			time.sleep(1)
+			sec+=1
+			if Timeout < sec:
+				call.Finish()
+		return 0
+	return -1
 
+if __name__ == "__main__":
+	main()
