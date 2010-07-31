@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import time
+import wave
 import Skype4Py
 import os
 
@@ -26,6 +27,14 @@ def main():
 		# just skip
 		print "skype failed to make call."
 		return -1
+	try:
+		wavefile=wave.open(SoundFile,'r')
+		WaveLength = wavefile.getnframes() / wavefile.getframerate()
+		wavefile.close()
+	except:
+		# just skip
+		print "wave file must be exist."
+		return -1
 	sec = 0
 	while call.Status != Skype4Py.clsInProgress:
 		time.sleep(1)
@@ -39,7 +48,7 @@ def main():
 		while call.Status == Skype4Py.clsInProgress:
 			time.sleep(1)
 			sec += 1
-			if Timeout < sec:
+			if Timeout + WaveLength < sec:
 				call.Finish()
 		return 0
 	return -1
