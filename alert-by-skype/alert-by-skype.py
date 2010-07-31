@@ -33,7 +33,7 @@ def main():
 		wavefile.close()
 	except:
 		# just skip
-		print "wave file must be exist."
+		print "something is wrong with wave file."
 		return -1
 	sec = 0
 	while call.Status != Skype4Py.clsInProgress:
