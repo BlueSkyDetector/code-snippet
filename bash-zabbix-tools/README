@@ -13,7 +13,7 @@
   0. You just DO WHAT THE FUCK YOU WANT TO.
 
 
-I made zabbix_get.sh and zabbix_top.sh without zabbix_get binary only using bash, cut, od and sleep.
+I made zabbix_get.sh and zabbix_top.sh without zabbix_get binary only using bash, cut, od, printf and sleep.
 It might be useful sometime, though it's a joke software.
 
 usage: zabbix_get.sh -s <host name or IP> [-p <port>] -k <key>
