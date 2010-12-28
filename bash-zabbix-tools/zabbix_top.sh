@@ -1,21 +1,39 @@
 #!/bin/bash
 set -e
 
-if [ "$1" = "" ]
+while getopts "hd:r:s:" flag; do
+	case $flag in
+		h) assert=true;;
+		d) debug_on=1;;
+		r) refresh_rate="$OPTARG"
+		   refresh_rate_on=true;;
+		s) server_list="$OPTARG"
+		   server_list_on=true;;
+    esac
+done
+
+if [ "$refresh_rate_on" != "true" ]
 then
-	echo "usage: $0 'host1 host2 host3 ...' <refresh_rate(0-9)> <debug(0|1)>"
-	exit -1
-else
-	server_list="$1"
+	refresh_rate=2
 fi
-if [ "$2" = "" ]
+if [ "$server_list_on" != "true" ]
 then
-	sleep_time=2
-else
-	sleep_time=$2
+	assert=true
 fi
 
-debug=0
+if [ "$assert" = "true" ]
+then
+	echo 'usage:' $0 '-s <host name or IP list> [-r <sec>] [-d]'
+	echo ''
+	echo 'Options:'
+	echo '  -s <host name or IP>          Specify host name or IP address list of a hosts. Such as "host1 host2 host3"'
+	echo '  -r <sec>                      Refresh rate.'
+	echo '  -d                            Debug mode.'
+	echo ''
+	echo 'Example:' $0 '-s "host1 host2 host3" -r 1 -d'
+	exit -1
+fi
+
 key_list_name="load_avg1 load_avg5 load_avg15 \
                mem_avail mem_total \
                swap_used cpu_user cpu_system cpu_idle cpu_wait cpu_nice"
@@ -137,11 +155,11 @@ do
 		echo -n "${server} :	"
 		for key in $key_list
 		do
-			zabbix_get $server 10050 $key $debug
+			zabbix_get $server 10050 $key $debug_on
 			echo -n "	"
 		done
 		echo ""
 	done
-	sleep $sleep_time
+	sleep $refresh_rate
 done
 

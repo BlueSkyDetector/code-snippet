@@ -17,4 +17,4 @@ I made zabbix_get.sh and zabbix_top.sh without zabbix_get binary only using bash
 It might be useful sometime, though it's a joke software.
 
 usage: zabbix_get.sh -s <host name or IP> [-p <port>] -k <key>
-usage: zabbix_top.sh 'host1 host2 host3 ...' <refresh_rate(0-9)> <debug(0|1)>
+usage: zabbix_top.sh -s <host name or IP list> [-r <sec>] [-d]
