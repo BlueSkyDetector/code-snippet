@@ -1,0 +1,20 @@
+            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+                    Version 2, December 2004
+
+ Copyright (C) 2010 Takanori Suzuki
+
+ Everyone is permitted to copy and distribute verbatim or modified
+ copies of this license document, and changing it is allowed as long
+ as the name is changed.
+
+            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+   TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
+
+  0. You just DO WHAT THE FUCK YOU WANT TO.
+
+
+I made zabbix_get.sh and zabbix_top.sh without zabbix_get binary only using bash, cut, od and sleep.
+It might be useful sometime, though it's a joke software.
+
+usage: zabbix_get.sh -s <host name or IP> [-p <port>] -k <key>
+usage: zabbix_top.sh 'host1 host2 host3 ...' <refresh_rate(0-9)> <debug(0|1)>
