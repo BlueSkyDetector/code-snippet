@@ -30,7 +30,6 @@ class ZabbixSender:
 		zbx_sender_json = simplejson.dumps(self.zbx_sender_data, separators=(',', ':'), ensure_ascii=False).encode('utf-8')
 		json_byte = len(zbx_sender_json)
 		self.send_data = struct.pack("<4sBq" + str(json_byte) + "s", self.zbx_header, self.zbx_version, json_byte, zbx_sender_json)
-		print self.send_data
 	
 	def Send(self):
 		self.__MakeSendData()
@@ -45,7 +44,6 @@ class ZabbixSender:
 		so.close()
 		tmp_data = struct.unpack("<4sBq" + str(len(recv_data) - struct.calcsize("<4sBq")) + "s", recv_data)
 		recv_json = simplejson.loads(tmp_data[3])
-		print recv_json
 		return recv_data
 
 if __name__ == '__main__':
@@ -53,4 +51,5 @@ if __name__ == '__main__':
 	for num in range(0,2):
 		sender.AddData(u'HostA', u'AppX_Logger', u'sent data 第' + str(num))
 	res = sender.Send()
+	print sender.send_data
 	print res
