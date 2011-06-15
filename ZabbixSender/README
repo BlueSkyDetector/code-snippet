@@ -27,6 +27,8 @@ Sample
 >>> sender.AddData(u'HostA', u'AppX_Logger', u'send data 3')
 {u'data': [{u'host': u'HostA', u'value': u'send data 1', u'key': u'AppX_Logger'}, {u'host': u'HostA', u'value': u'send data 2', u'key': u'AppX_Logger'}, {u'host': u'HostA', u'value': u'send data 3', u'key': u'AppX_Logger'}], u'request': u'sender data'}
 >>> res=sender.Send()
+>>> sender.ClearData()
+{u'data': [], u'request': u'sender data'}
 >>> print res
 ZBXDW{
         "response":"success",
