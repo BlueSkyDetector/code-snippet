@@ -15,10 +15,10 @@ class ZabbixSender:
 		self.server_ip = socket.gethostbyname(server_host)
 		self.server_port = server_port
 	
-	def AddData(self, host, key, value, timestamp = None):
+	def AddData(self, host, key, value, clock = None):
 		add_data = {u'host': host, u'key': key, u'value': value}
-		if timestamp != None:
-			add_data[u'timestamp'] = timestamp
+		if clock != None:
+			add_data[u'clock'] = clock
 		self.zbx_sender_data['data'].append(add_data)
 		return self.zbx_sender_data
 	
