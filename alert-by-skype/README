@@ -18,6 +18,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 You can call by skype with this script.
 You can use this script for Zabbix alert script to send alert by skype.
 
+This script requires access to skype.
+Skype must be executed before starting script.
+If different user executes this script, you have to allow access to X used by skype.
+
 $ alert-by-skype.py '+81-xx-xxxx-xxxx'
 $ alert-by-skype.py 'echo123'
 
