@@ -14,6 +14,13 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
+
+You can call by skype with this script.
+You can use this script for Zabbix alert script to send alert by skype.
+
+$ alert-by-skype.py '+81-xx-xxxx-xxxx'
+$ alert-by-skype.py 'echo123'
+
 Skype4Py library is needed.
 
 alert-by-skype.py is script to alert by skype.
