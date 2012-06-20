@@ -1,0 +1,38 @@
+            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+                    Version 2, December 2004
+
+ Copyright (C) 2012 Takanori Suzuki
+
+ Everyone is permitted to copy and distribute verbatim or modified
+ copies of this license document, and changing it is allowed as long
+ as the name is changed.
+
+            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+   TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
+
+  0. You just DO WHAT THE FUCK YOU WANT TO.
+
+
+Sample:
+
+$ cat sample_host.csv
+hostA,192.168.0.1
+hostB,192.168.0.2
+hostC,192.168.0.3
+hostD,192.168.0.4
+host1,192.168.1.1
+host2,192.168.1.2
+
+$ ./generate_host_xml_from_csv.py sample_host.csv > sample_host.xml
+
+$ cat sample_map.csv 
+mapA,hostA
+mapA,hostB
+mapA,hostC
+mapA,hostD
+mapB,host1
+mapB,host2
+mapB,hostA
+mapB,hostB
+
+$ ./generate_map_xml_from_csv.py sample_map.csv 600 600 > sample_map.xml
