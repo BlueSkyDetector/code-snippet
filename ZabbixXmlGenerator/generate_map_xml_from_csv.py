@@ -108,7 +108,7 @@ for map_name in map_list:
 			else:
 				host_x += 1
 	else:
-		print "x_size x y_size is too small to put hosts."
+		print >>sys.stderr, "x_size x y_size is too small to put hosts."
 		sys.exit()
 	output_xml += map_fotter.replace("REPLACE_MAP_NAME",map_name.encode("utf-8")).replace("REPLACE_X_SIZE",str(x_size)).replace("REPLACE_Y_SIZE",str(y_size))
 output_xml += fotter
