@@ -2,7 +2,10 @@
 # -*- coding: utf-8 -*-
 import socket
 import struct
-import simplejson
+try:
+    import simplejson
+except ImportError:
+    import json as simplejson
 
 class ZabbixSender:
 	
