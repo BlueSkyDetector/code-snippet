@@ -2,7 +2,10 @@
 # -*- coding: utf-8 -*-
 import socket
 import struct
-import simplejson
+try:
+    import simplejson
+except ImportError:
+    import json as simplejson
 
 __version__ = "0.1"
 
