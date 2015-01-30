@@ -4,6 +4,8 @@ import socket
 import struct
 import simplejson
 
+__version__ = "0.1"
+
 class ZabbixSender:
 	
 	zbx_header = 'ZBXD'
